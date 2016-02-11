@@ -170,7 +170,7 @@
     NSString *format =  [options objectForKey:@"format"];
     NSString *filename =  [options objectForKey:@"filename"];
     NSString *directory =  [options objectForKey:@"directory"];
-    directory = [self getUrl:directory];
+    // directory = [self getUrl:directory]; // commented out by Jay
     NSInteger quality = [[options objectForKey:@"quality"] integerValue];
     bool photoAlbum = [[options objectForKey:@"photoAlbum"] boolValue];
     if (photoAlbum == YES) {
@@ -184,8 +184,12 @@
             imageDataObject = UIImagePNGRepresentation(img);
         }
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
+        // commented out by Jay
+        // NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        // NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        // added by Jay
+        NSString *documentsDirectory = NSTemporaryDirectory();
         
         NSMutableString* fullFileName;
         if (![directory isEqualToString:@""]) {
